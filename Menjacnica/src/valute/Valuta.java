@@ -2,6 +2,8 @@ package valute;
 
 import java.util.GregorianCalendar;
 
+import javax.management.RuntimeErrorException;
+
 public class Valuta {
 
 	private String naziv;
@@ -11,7 +13,7 @@ public class Valuta {
 	private double prodajniKurs;
 	private double kupovniKurs;
 	private double srednjiKurs;
-	
+
 	public double getProdajniKurs() {
 		return prodajniKurs;
 	}
@@ -25,15 +27,24 @@ public class Valuta {
 	}
 
 	public void setProdajniKurs(double prodajniKurs) {
-		this.prodajniKurs = prodajniKurs;
+		if (prodajniKurs < 0)
+			throw new RuntimeException("Kurs ne sme biti negativan.");
+		else
+			this.prodajniKurs = prodajniKurs;
 	}
 
 	public void setKupovniKurs(double kupovniKurs) {
-		this.kupovniKurs = kupovniKurs;
+		if (kupovniKurs < 0)
+			throw new RuntimeException("Kurs ne sme biti negativan.");
+		else
+			this.kupovniKurs = kupovniKurs;
 	}
 
 	public void setSrednjiKurs(double srednjiKurs) {
-		this.srednjiKurs = srednjiKurs;
+		if (srednjiKurs < 0)
+			throw new RuntimeException("Kurs ne sme biti negativan.");
+		else
+			this.srednjiKurs = srednjiKurs;
 	}
 
 	public String getNaziv() {
@@ -49,15 +60,24 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if (naziv == null || naziv.isEmpty())
+			throw new RuntimeException("Greska u unosu naziva");
+		else
+			this.naziv = naziv;
 	}
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv == null || skraceniNaziv.isEmpty())
+			throw new RuntimeException("Greska u unosu skracenog naziva");
+		else
+			this.skraceniNaziv = skraceniNaziv;
 	}
 
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if (datum == null)
+			throw new RuntimeException("Greska u unosu datuma!");
+		else
+			this.datum = datum;
 	}
 
 	@Override
