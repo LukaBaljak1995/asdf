@@ -34,27 +34,45 @@ public class Valute {
 	}
 
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if (naziv != null && !naziv.isEmpty())
+			throw new RuntimeException("Greska");
+		else
+			this.naziv = naziv;
 	}
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv != null && !skraceniNaziv.isEmpty())
+			throw new RuntimeException("Greska");
+		else
+			this.skraceniNaziv = skraceniNaziv;
 	}
 
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if (datum != null)
+			throw new RuntimeException("Greska");
+		else
+			this.datum = datum;
 	}
 
 	public void setProdajniKurs(double prodajniKurs) {
-		this.prodajniKurs = prodajniKurs;
+		if (prodajniKurs < 0)
+			throw new RuntimeException("Greska");
+		else
+			this.prodajniKurs = prodajniKurs;
 	}
 
 	public void setSrednjiKurs(double srednjiKurs) {
-		this.srednjiKurs = srednjiKurs;
+		if (srednjiKurs < 0)
+			throw new RuntimeException("Greska");
+		else
+			this.srednjiKurs = srednjiKurs;
 	}
 
 	public void setKupovniKurs(double kupovniKurs) {
-		this.kupovniKurs = kupovniKurs;
+		if (kupovniKurs < 0)
+			throw new RuntimeException("Greska");
+		else
+			this.kupovniKurs = kupovniKurs;
 	}
 
 	@Override
